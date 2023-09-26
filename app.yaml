@@ -1,19 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: liatro
+  name: liatrio-app-deployment
+  labels:
+    app: liatrio-app
 specs:
   replicas: 1
   selector:
     matchLabels:
-      app: liatro
+      app: liatrio-app
   template:
     metadata:
       labels:
-        app: liatro
+        app: liatrio-app
     spec:
-      container:
-        - name: app
-          image: kelbycodes/liatrio-app:1.0
-          ports:
-            - containerPort: 8080
+      containers:
+      - name: liatrio-app
+        image: kelbycodes/liatrio-app:1.0
+        ports:
+          - containerPort: 8080
+      environment:
+          PORT: 8080
