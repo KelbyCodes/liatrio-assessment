@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: liatrio-app-deployment
+  namespace: actions
   labels:
     app: liatrio-app
 specs:
@@ -19,5 +20,7 @@ specs:
         image: kelbycodes/liatrio-app:1.0
         ports:
           - containerPort: 8080
+            protocol: TCP
+      repository: KelbyCodes/liatrio-assessment
       environment:
           PORT: 8080
