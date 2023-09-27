@@ -41,6 +41,5 @@ jobs:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
         gcloud auth configure-docker us-south1-docker.pkg.dev
-        docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app .
-        docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app
-
+        docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/ubuntu:latest .
+        docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/ubuntu:latest
