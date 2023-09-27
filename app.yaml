@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: liatrio-app-deployment
-  namespace: actions
   labels:
     app: liatrio-app
 spec:
