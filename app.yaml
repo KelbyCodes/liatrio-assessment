@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: liatrio-app-deployment
-  namespace: default
+  namespace: actions
   labels:
     app: liatrio-app
 spec:
@@ -17,7 +17,9 @@ spec:
     spec:
       containers:
       - name: liatrio-app
-        image: kelbycodes/liatrio-app:1.0
+        # Image for testing locally
+        # image: kelbycodes/liatrio-app:1.0
+        image: us-south1-docker.pkg.dev/GOOGLE_PROJECT/liatrio-app/node:12
         ports:
         - containerPort: 8080
         env:

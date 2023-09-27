@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build and Deploy
 
 on:
   push:
@@ -8,18 +8,6 @@ on:
     branches:
     - "main"
   workflow_dispatch:
-
-# working block
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v3
-#     - name: Build the Docker image
-#       run: docker build -t kelbycodes/liatrio-app:1.0 .
-    
-#     - name: Confirm container build
-#       run: echo Docker Container Built!
 
 jobs:
   build-and-deploy:
@@ -34,7 +22,11 @@ jobs:
       with:
         project_id: ${{ secrets.GOOGLE_PROJECT }}
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
+
+    - name: Confirm gcloud cli installed properly
+      run: echo gcloud cli installed properly!
 
     - name: build and push the docker image to artifact registry
       env:
@@ -43,3 +35,18 @@ jobs:
         gcloud auth configure-docker us-south1-docker.pkg.dev
         docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:12 .
         docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:12
+
+    - name: Confirm docker image pushed to artifact registry properly
+      run: echo Docker image pushed to artifact registry properly!
+
+    - name: deploy to gke
+      env:
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: |
+        gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
+        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources.yaml
+        kubectl apply -f resources.yaml
+
+    - name: Confirm Docker image deployed to gke kluster properly
+      run: echo Docker image deployed to gke kluster properly!
+  
