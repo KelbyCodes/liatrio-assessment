@@ -46,4 +46,3 @@ jobs:
         kubectl apply -f app.yaml
     - name: Confirm Docker image deployed to gke kluster properly
       run: echo Docker image deployed to gke kluster properly!
-  
