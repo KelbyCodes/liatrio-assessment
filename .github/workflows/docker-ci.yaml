@@ -37,10 +37,10 @@ jobs:
     - name: Confirm docker image pushed to artifact registry properly
       run: echo Docker image pushed to artifact registry properly!
 
-    - name: Push Docker image DockerHub properly
-      run: docker push kelbycodes/liatrio-app:1.0
-    - name: Confirm docker image pushed to DockerHub properly
-      run: echo Docker image pushed to DockerHub properly!
+    # - name: Push Docker image DockerHub properly
+    #   run: docker push kelbycodes/liatrio-app:1.0
+    # - name: Confirm docker image pushed to DockerHub properly
+    #   run: echo Docker image pushed to DockerHub properly!
       
 
     - name: deploy to gke
