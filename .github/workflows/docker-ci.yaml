@@ -45,7 +45,7 @@ jobs:
       run: |
         gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources.yaml
-        kubectl apply -f resources.yaml
+        kubectl apply -f app.yaml
 
     - name: Confirm Docker image deployed to gke kluster properly
       run: echo Docker image deployed to gke kluster properly!
