@@ -32,16 +32,10 @@ jobs:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
         gcloud auth configure-docker us-south1-docker.pkg.dev
-        docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:12 .
-        docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:12
+        docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/nginx:latest .
+        docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/nginx:latest
     - name: Confirm docker image pushed to artifact registry properly
       run: echo Docker image pushed to artifact registry properly!
-
-    # - name: Push Docker image DockerHub properly
-    #   run: docker push kelbycodes/liatrio-app:1.0
-    # - name: Confirm docker image pushed to DockerHub properly
-    #   run: echo Docker image pushed to DockerHub properly!
-      
 
     - name: deploy to gke
       env:
