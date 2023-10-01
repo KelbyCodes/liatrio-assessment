@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: liatrio-app/v1
 kind: Deployment
 metadata:
   name: liatrio-app-deployment
@@ -18,7 +18,7 @@ spec:
       - name: liatrio-app
         # Image for testing locally
         # image: kelbycodes/liatrio-app:1.0
-        image: us-south1-docker.pkg.dev/GOOGLE_PROJECT/liatrio-app/node:12
+        image: us-south1-docker.pkg.dev/GOOGLE_PROJECT/liatrio-app/liatrio-app:12
         ports:
         - containerPort: 8080
         env:

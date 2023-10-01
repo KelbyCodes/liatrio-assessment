@@ -1,0 +1,19 @@
+apiVersion: liatrio-app/v1
+kind: Ingress
+metadata:
+  name: ingress
+  # annotations:
+  #   nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-ingress
+  rules:
+    - http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              # name: test
+              name: test
+              port:
+                number: 8080
