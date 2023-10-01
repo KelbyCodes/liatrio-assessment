@@ -2,8 +2,8 @@ apiVersion: liatrio-app/v1
 kind: Deployment
 metadata:
   name: liatrio-app-deployment
-  labels:
-    app: liatrio-app
+  # labels:
+  #   app: liatrio-app
 spec:
   replicas: 1
   selector:
