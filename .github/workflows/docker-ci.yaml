@@ -57,3 +57,5 @@ jobs:
     - name: Confirm ingress applied properly
       run: echo Ingress applied properly!
       
+    - name: get service list
+      run: kubectl get service -o wide
