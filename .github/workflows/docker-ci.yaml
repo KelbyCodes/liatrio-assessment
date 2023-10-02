@@ -37,7 +37,7 @@ jobs:
     - name: Confirm docker image pushed to artifact registry properly
       run: echo Docker image pushed to artifact registry properly!
 
-      - name: deploy to gke
+    - name: deploy to gke
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
