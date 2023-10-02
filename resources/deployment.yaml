@@ -9,24 +9,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      # app: liatrio-app
       app: liatrio-app
-      # run: liatrio-app
   template:
     metadata:
       labels:
         app: liatrio-app
-        # run: liatrio-app
     spec:
       containers:
       - name: liatrio-app
-        # Image for testing locally
-        # image: kelbycodes/liatrio-app:1.0
         image: us-south1-docker.pkg.dev/GOOGLE_PROJECT/liatrio-app/node:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
           protocol: TCP
-        # env:
-        # - name: PORT
-        #   value: "8080"
