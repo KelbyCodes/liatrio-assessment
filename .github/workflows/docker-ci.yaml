@@ -58,9 +58,7 @@ jobs:
       run: echo Docker image deployed to gke kluster properly!
 
     - name: Apply web-service to cluster
-      run: |
-        kubectl apply -f resources/web-service.yaml
-        kubectl get service web
+      run: kubectl apply -f resources/web-service.yaml
     - name: Confirm web-service applied properly
       run: echo web-service applied properly!
       
