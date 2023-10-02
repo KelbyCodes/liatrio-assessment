@@ -60,4 +60,4 @@ jobs:
     - name: deploy to gke
       run: kubectl apply -f ingress.yaml
     - name: Confirm ingress prepared properly
-      run: Ingress prepared properly!
+      run: echo Ingress prepared properly!
