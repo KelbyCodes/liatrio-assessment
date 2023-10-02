@@ -11,7 +11,7 @@ spec:
     matchLabels:
       # app: liatrio-app
       app: liatrio-app
-      run: liatrio-app
+      # run: liatrio-app
   template:
     metadata:
       labels:
