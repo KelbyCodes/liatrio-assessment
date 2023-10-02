@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         app: liatrio-app
-        run: liatrio-app
+        # run: liatrio-app
     spec:
       containers:
       - name: liatrio-app
