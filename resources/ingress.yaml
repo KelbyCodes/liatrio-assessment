@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: liatrio-app-ingress
+  namespace: default
   # annotations:
   #   nginx.ingress.kubernetes.io
 # spec:
@@ -20,6 +21,6 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: web
+      name: liatrio-app
       port:
         number: 8080
