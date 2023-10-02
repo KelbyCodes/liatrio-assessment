@@ -37,6 +37,26 @@ jobs:
     - name: Confirm docker image pushed to artifact registry properly
       run: echo Docker image pushed to artifact registry properly!
 
+      - name: deploy to gke
+      env:
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: |
+        gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
+        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" app.yaml
+        kubectl apply -f app.yaml
+    - name: Confirm Docker image deployed to gke kluster properly
+      run: echo Docker image deployed to gke kluster properly!
+
+    - name: deploy to gke
+      env:
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: |
+        gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
+        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" app.yaml
+        kubectl apply -f app.yaml
+    - name: Confirm Docker image deployed to gke kluster properly
+      run: echo Docker image deployed to gke kluster properly!
+
     - name: deploy to gke
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
