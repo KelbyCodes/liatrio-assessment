@@ -57,7 +57,15 @@ jobs:
     - name: Confirm Docker image deployed to gke kluster properly
       run: echo Docker image deployed to gke kluster properly!
 
-    - name: deploy to gke
+    - name: Apply web-service to cluster
+      run: |
+        kubectl apply -f web-service.yaml
+        kubectl get service web
+    - name: Confirm web-service applied properly
+      run: echo web-service applied properly!
+      
+    - name: Apply ingress to gke
       run: kubectl apply -f ingress.yaml
-    - name: Confirm ingress prepared properly
-      run: echo Ingress prepared properly!
+    - name: Confirm ingress applied properly
+      run: echo Ingress applied properly!
+      
