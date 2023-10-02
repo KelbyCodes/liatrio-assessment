@@ -5,6 +5,12 @@ metadata:
   namespace: default
   # annotations:
   #   nginx.ingress.kubernetes.io
+spec:
+  defaultBackend:
+    service:
+      name: liatrio-app
+      port:
+        number: 8080
 # spec:
 #   ingressClassName: nginx-ingress
 #   rules:
@@ -18,9 +24,3 @@ metadata:
 #               name: test
 #               port:
 #                 number: 8080
-spec:
-  defaultBackend:
-    service:
-      name: liatrio-app
-      port:
-        number: 8080
