@@ -18,7 +18,7 @@ spec:
       - name: liatrio-app
         # Image for testing locally
         # image: kelbycodes/liatrio-app:1.0
-        image: us-south1-docker.pkg.dev/GOOGLE_PROJECT/liatrio-app/liatrio-app:12
+        image: us-south1-docker.pkg.dev/GOOGLE_PROJECT/liatrio-app/liatrio-app:1.0
         ports:
         - containerPort: 8080
         env:
