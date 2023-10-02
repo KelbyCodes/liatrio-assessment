@@ -62,3 +62,6 @@ jobs:
 
     - name: get ingress list
       run: kubectl get ingress -A -o json
+
+    - name: get ingress list WIDE
+      run: kubectl get ingress -A -o wide
