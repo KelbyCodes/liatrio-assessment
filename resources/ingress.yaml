@@ -6,6 +6,6 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: liatrio-app-deployment-web-service
+      name: liatrio-app-web-service
       port:
         number: 8080

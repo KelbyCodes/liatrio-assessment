@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: liatrio-app-deployment-web-service
+  name: liatrio-app-web-service
   namespace: default
 spec:
   ports:
