@@ -24,8 +24,8 @@ jobs:
         gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
         kubectl get service -o wide
         kubectl get ingress -A -o wide
-        echo ******************
-        kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'        
+      # echo ******************
+      # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'        
   
     - name: Delete web service
       run: kubectl delete service liatrio-app-web-service
