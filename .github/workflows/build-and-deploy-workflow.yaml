@@ -44,9 +44,9 @@ jobs:
       run: echo Docker image pushed to artifact registry properly!
 
 
-# remove block
-    - name: test kubectl version
-      run: kubectl version
+# # remove block
+#     - name: test kubectl version
+#       run: kubectl version
 
 
     - name: deploy to gke
