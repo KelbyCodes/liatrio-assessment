@@ -23,7 +23,7 @@ jobs:
     - name: Confirm gcloud cli installed properly
       run: echo gcloud cli installed properly!
 
-      
+
     - name: get service & ingress lists
       run: |
         gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
@@ -32,3 +32,10 @@ jobs:
 
     - name: test2
       run: echo test2
+
+    - name: test install w3m
+      run: sudo apt-get install w3m
+
+    - name: test2
+      run: echo test2
+  
