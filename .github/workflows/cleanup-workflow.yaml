@@ -18,25 +18,14 @@ jobs:
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
-    - name: Confirm gcloud cli installed properly
-      run: echo gcloud cli installed properly!
-
       
-# remove block ?
     - name: get service & ingress lists
       run: |
         gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
         kubectl get service -o wide
         kubectl get ingress -A -o wide
-
-# # remove block
-#     - name: test install w3m
-#       run: sudo apt-get install w3m
-#     - name: open web browser
-#       run: open "https://google.com" 
-
-#     - name: test3
-#       run: echo test3
+        echo ******************
+        kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'        
   
     - name: Delete web service
       run: kubectl delete service liatrio-app-web-service
