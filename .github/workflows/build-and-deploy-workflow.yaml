@@ -32,6 +32,8 @@ jobs:
 #     - name: test kubectl version
 #       run: kubectl version
 
+    - name: create 2nd cluster
+      run: gcloud container clusters create test-cluster-2
 
     - name: build and push the docker image to artifact registry
       env:
