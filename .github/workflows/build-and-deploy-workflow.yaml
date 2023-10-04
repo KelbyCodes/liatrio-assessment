@@ -43,8 +43,9 @@ jobs:
 
     - name: Apply web-service & ingress to GKE cluster
       run: |
-        kubectl apply -f resources/web-service.yaml resources/ingress.yaml
-      # kubectl apply -f resources/ingress.yaml
+        kubectl apply -f resources/ingress.yaml
+        kubectl apply -f resources/web-service.yaml
+        kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
       
     - name: get service & ingress lists
       run: |
