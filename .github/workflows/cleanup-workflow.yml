@@ -1,6 +1,14 @@
 # test
 
-name: build-and-deploy
+name: cleanup
 
 on:
   workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: test
+      run: test
