@@ -23,22 +23,6 @@ jobs:
     - name: Confirm gcloud cli installed properly
       run: echo gcloud cli installed properly!
 
-
-
-
-    # - name: TEST kubectl get
-    #   env:
-    #     GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-    #   run: |
-    #     gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
-    #     sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources/deployment.yaml
-    #     kubectl apply -f resources/deployment.yaml
-    # - name: Confirm Docker image deployed to gke kluster properly
-    #   run: echo Docker image deployed to gke kluster properly!
-
-
-
-
     - name: get service & ingress lists
       run: |
         gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
