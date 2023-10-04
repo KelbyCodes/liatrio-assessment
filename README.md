@@ -8,16 +8,16 @@ Prerequisites before running Initial command:
     2. Ensure that the needed scripts have executable file permissions by running (within the root project directory):
         sudo chmod +x ./scripts/*.sh
 
-************ 0 - What is running? ************
+************ 0 - WHAT IS RUNNING? ************
 
 
-************ 1 - Run Instructions ************
+************ 1 - RUN INSTRUCTIONS ************
 
 Running Initial command:
     run the "activation-script" script using the following command (within the project directory):
         bash ./scripts/activation-script.sh
 
-************ 2 - Running Information ************
+************ 2 - RUNNING INFORMATION ************
 
 Visiting URL link:
     1. Run the "get-url-script" script using the following command (within the project directory):
@@ -26,7 +26,7 @@ Visiting URL link:
     3. Wait & refresh the page until it displays the JSON payload (This may take a few minutes...)
         *** If there is an error wait a bit longer, but run the "cleanup-script.sh" as a last resort to reset.
 
-************ 3 - Clean-Up Instructions ************
+************ 3 - CLEAN-UP INSTRUCTIONS ************
 
 Running Initial command:
     run the "cleanup-script" script using the following command (within the project directory):
