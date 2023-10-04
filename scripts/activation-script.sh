@@ -1,4 +1,4 @@
 #! /usr/bin/bash
 
-gh workflow run build-and-deploy
+gh workflow run .github/workflows/build-and-deploy-workflow.yml
 

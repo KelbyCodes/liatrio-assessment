@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-gh workflow run cleanup-workflow
+gh workflow run .github/workflows/cleanup-workflow.yml
 
 
 
