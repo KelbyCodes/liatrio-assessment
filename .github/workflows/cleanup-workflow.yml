@@ -40,3 +40,11 @@ jobs:
     - name: test3
       run: echo test3
   
+    - name: Delete web service
+      run: kubectl delete service liatrio-app-web-service
+      
+    - name: Delete ingress
+      run: kubectl delete ingress liatrio-app-ingress
+
+    - name: test4
+      run: echo test4
