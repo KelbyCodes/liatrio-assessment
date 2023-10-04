@@ -12,3 +12,11 @@ jobs:
 
     - name: test
       run: echo test
+
+    - name: get service & ingress lists
+      run: |
+        kubectl get service -o wide
+        kubectl get ingress -A -o wide
+
+    - name: test2
+      run: echo test2
