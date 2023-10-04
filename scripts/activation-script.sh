@@ -1,3 +1,4 @@
 #! /usr/bin/bash
 
-sudo chmod +x activation_script.sh
+gh workflow run build-and-deploy
+

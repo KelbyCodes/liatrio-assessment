@@ -18,7 +18,6 @@ spec:
       containers:
       - name: liatrio-app
         image: us-south1-docker.pkg.dev/GOOGLE_PROJECT/liatrio-app/node:latest
-        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
           protocol: TCP
