@@ -45,7 +45,7 @@ jobs:
       run: |
         kubectl apply -f resources/ingress.yaml
         kubectl apply -f resources/web-service.yaml
-        kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
+      # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
       
     - name: get service & ingress lists
       run: |
