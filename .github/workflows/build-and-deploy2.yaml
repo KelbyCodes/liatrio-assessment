@@ -34,11 +34,11 @@ jobs:
       run: echo gcloud cli installed properly!
 
 
-# remove block
-    - name: list service accounts
-      run: gcloud iam service-accounts list
-    - name: Confirm service accounts listed properly
-      run: echo service accounts listed properly!
+# # remove block
+#     - name: list service accounts
+#       run: gcloud iam service-accounts list
+#     - name: Confirm service accounts listed properly
+#       run: echo service accounts listed properly!
 
 # remove block
     - name: test kubectl version
