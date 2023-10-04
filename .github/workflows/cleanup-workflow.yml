@@ -23,6 +23,7 @@ jobs:
     - name: Confirm gcloud cli installed properly
       run: echo gcloud cli installed properly!
 
+      
     - name: get service & ingress lists
       run: |
         gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
