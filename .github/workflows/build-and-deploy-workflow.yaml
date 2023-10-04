@@ -32,16 +32,16 @@ jobs:
 #     - name: test kubectl version
 #       run: kubectl version
 
-# # remove cluster
-    - name: create 2nd cluster
-      env:
-        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: |
-        gcloud config set project ${{ secrets.GOOGLE_PROJECT }}
-        gcloud container clusters create test-cluster-2 --zone us-south1
+# # # remove cluster
+#     - name: create 2nd cluster
+#       env:
+#         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+#       run: |
+#         gcloud config set project ${{ secrets.GOOGLE_PROJECT }}
+#         gcloud container clusters create test-cluster-2 --zone us-south1
 
 
-        
+
     - name: build and push the docker image to artifact registry
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
