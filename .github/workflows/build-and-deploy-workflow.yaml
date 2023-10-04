@@ -61,3 +61,6 @@ jobs:
       run: |
         kubectl get service -o wide
         kubectl get ingress -A -o wide
+
+    - name: open web browser
+      run: open -n "https://stackoverflow.com" 
