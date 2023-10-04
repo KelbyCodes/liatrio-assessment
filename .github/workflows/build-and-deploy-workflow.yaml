@@ -1,4 +1,4 @@
-name: build-and-deploy
+name: build-and-deploy-workflow
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build-and-deploy-workflow:
     runs-on: ubuntu-latest
     steps:
 

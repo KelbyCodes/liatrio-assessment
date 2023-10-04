@@ -35,7 +35,7 @@ jobs:
     - name: test install w3m
       run: sudo apt-get install w3m
     - name: open web browser
-      run: open "https://stackoverflow.com" 
+      run: open "https://google.com" 
 
     - name: test3
       run: echo test3
