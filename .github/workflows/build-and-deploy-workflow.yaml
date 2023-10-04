@@ -33,7 +33,9 @@ jobs:
 #       run: kubectl version
 
     - name: create 2nd cluster
-      run: gcloud container clusters create test-cluster-2 --zone us-south1
+      run: |
+        gcloud config set project liatrio-project
+        gcloud container clusters create test-cluster-2 --zone us-south1
 
     - name: build and push the docker image to artifact registry
       env:
