@@ -36,6 +36,12 @@ jobs:
     - name: test install w3m
       run: sudo apt-get install w3m
 
-    - name: test2
-      run: echo test2
+    - name: test3
+      run: echo test3
+
+    - name: open web browser
+      run: open "https://stackoverflow.com" 
+  
+    - name: test4
+      run: echo test4
   
