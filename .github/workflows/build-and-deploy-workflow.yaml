@@ -27,21 +27,6 @@ jobs:
     - name: Confirm gcloud cli installed properly
       run: echo gcloud cli installed properly!
 
-
-# # remove block
-#     - name: test kubectl version
-#       run: kubectl version
-
-# # # remove cluster
-#     - name: create 2nd cluster
-#       env:
-#         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-#       run: |
-#         gcloud config set project ${{ secrets.GOOGLE_PROJECT }}
-#         gcloud container clusters create test-cluster-2 --zone us-south1
-
-
-
     - name: build and push the docker image to artifact registry
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
@@ -52,12 +37,6 @@ jobs:
     - name: Confirm docker image pushed to artifact registry properly
       run: echo Docker image pushed to artifact registry properly!
 
-
-# # remove block
-#     - name: test kubectl version
-#       run: kubectl version
-
-
     - name: deploy to gke
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
@@ -67,12 +46,6 @@ jobs:
         kubectl apply -f resources/deployment.yaml
     - name: Confirm Docker image deployed to gke kluster properly
       run: echo Docker image deployed to gke kluster properly!
-
-
-# remove block
-    - name: test kubectl version
-      run: kubectl version
-
 
     - name: Apply web-service to cluster
       run: kubectl apply -f resources/web-service.yaml
