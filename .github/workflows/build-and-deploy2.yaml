@@ -42,9 +42,7 @@ jobs:
 
 # remove block
     - name: test kubectl version
-      run: |
-        gcloud auth configure-docker us-south1-docker.pkg.dev
-        kubectl version
+      run: kubectl version
 
 
 
