@@ -41,8 +41,9 @@ jobs:
     - name: CREATE SAMPLE CLUSTER
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      # run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a --max-cpu=0.5 --max-memory=2048 --enable-autoprovisioning 
-      run: gcloud container clusters create-auto sample-cluster --project=$GOOGLE_PROJECT --location=us-central1
+      # run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a --enable-autoprovisioning --num-nodes=1 --max-cpu=0.5 --max-memory=2048
+      # run: gcloud container clusters create-auto sample-cluster --project=$GOOGLE_PROJECT --location=us-central1
+      run: gcloud container clusters create-auto sample-cluster --project=$GOOGLE_PROJECT --location=us-central1 --num-nodes=1
 
 
     - name: deploy to gke
@@ -54,9 +55,7 @@ jobs:
         kubectl apply -f resources/deployment.yaml
 
     - name: Apply web-service & ingress to GKE cluster
-      run: |
-        kubectl apply -f resources/ingress.yaml
-        kubectl apply -f resources/web-service.yaml
+      run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
       # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
       
     - name: get service & ingress lists
