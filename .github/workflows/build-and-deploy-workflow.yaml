@@ -32,7 +32,8 @@ jobs:
         gcloud auth configure-docker us-south1-docker.pkg.dev
         docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest .
         docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest
-        gcloud iam service-accounts list
+
+      # gcloud iam service-accounts list
 
 
     - name: CREATE SAMPLE CLUSTER
