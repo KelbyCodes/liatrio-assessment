@@ -37,7 +37,7 @@ jobs:
     - name: CREATE SAMPLE CLUSTER
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --region=us-central1-a
+      run: gcloud container clusters create sample-cluster --region=us-central1-a
 
 
     - name: deploy to gke
