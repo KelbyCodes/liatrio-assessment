@@ -53,11 +53,29 @@ jobs:
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources/deployment.yaml
         kubectl apply -f resources/deployment.yaml
 
+        
     - name: Apply web-service & ingress to GKE cluster
       run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
       # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
       
     - name: get service & ingress lists
+      run: |
+        kubectl get service -o wide
+        kubectl get ingress -A -o wide
+      
+    - name: deploy to gke222222222
+      env:
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: |
+        gcloud container clusters get-credentials sample-cluster
+        sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources/deployment.yaml
+        kubectl apply -f resources/deployment.yaml
+
+    - name: Apply web-service & ingress to GKE cluster222222222
+      run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
+      # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
+      
+    - name: get service & ingress lists222222222
       run: |
         kubectl get service -o wide
         kubectl get ingress -A -o wide
