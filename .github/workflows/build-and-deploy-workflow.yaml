@@ -33,6 +33,13 @@ jobs:
         docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest .
         docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest
 
+
+    - name: deploy to gke
+      env:
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: gcloud container clusters create sample-cluster
+
+      
     - name: deploy to gke
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
