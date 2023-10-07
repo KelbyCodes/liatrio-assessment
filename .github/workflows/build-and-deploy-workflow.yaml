@@ -25,58 +25,51 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
 
-    - name: build and push the docker image to artifact registry
+    # - name: build and push the docker image to artifact registry
+    #   env:
+    #     GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+    #   run: |
+    #     gcloud auth configure-docker us-south1-docker.pkg.dev
+    #     docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest .
+    #     docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest
+    #     gcloud auth list
+    #     gcloud config get account
+
+    - name: Create liatrio-app-cluster-1
+      # env:
+      #   GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: gcloud container clusters create liatrio-app-cluster-1 --location=us-central1-a --enable-autoprovisioning --max-cpu=2 --max-memory=4096
+
+    # - name: deploy to gke
+    #   env:
+    #     GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+    #   run: |
+    #     gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
+    #     sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources/deployment.yaml
+    #     kubectl apply -f resources/deployment.yaml
+        
+    # - name: Apply web-service & ingress to GKE cluster
+    #   run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
+    #   # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
+      
+    # - name: get service & ingress lists
+    #   run: |
+    #     kubectl get service -o wide
+    #     kubectl get ingress -A -o wide
+      
+    - name: Deploy app image to cluster
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
       run: |
-        gcloud auth configure-docker us-south1-docker.pkg.dev
-        docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest .
-        docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest
-        gcloud auth list
-        gcloud config get account
-
-      # gcloud iam service-accounts list
-
-
-    - name: CREATE SAMPLE CLUSTER
-      env:
-        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-        # run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a --enable-autoprovisioning --num-nodes=1 --max-cpu=1 --max-memory=2048
-      # run: gcloud container clusters create sample-cluster --location=us-central1-a --enable-autoprovisioning --num-nodes=1 --max-cpu=1 --max-memory=2048
-      run: gcloud container clusters create sample-cluster --location=us-central1-a --enable-autoprovisioning --max-cpu=2 --max-memory=4096
-        # run: gcloud container clusters create-auto sample-cluster --project=$GOOGLE_PROJECT --location=us-central1
-
-
-    - name: deploy to gke
-      env:
-        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: |
-        gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
+        gcloud container clusters get-credentials liatrio-app-cluster-1 --location=us-central1-a
         sed -i "s/GOOGLE_PROJECT/$GOOGLE_PROJECT/g" resources/deployment.yaml
         kubectl apply -f resources/deployment.yaml
 
-        
-    - name: Apply web-service & ingress to GKE cluster
+    - name: Apply web-service & ingress
       run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
       # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
       
     - name: get service & ingress lists
-      run: |
-        kubectl get service -o wide
-        kubectl get ingress -A -o wide
-      
-    - name: deploy to gke222222222
-      env:
-        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: |
-        gcloud container clusters get-credentials sample-cluster --location=us-central1-a
-        kubectl apply -f resources/deployment.yaml
-
-    - name: Apply web-service & ingress to GKE cluster222222222
-      run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
-      # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
-      
-    - name: get service & ingress lists222222222
       run: |
         kubectl get service -o wide
         kubectl get ingress -A -o wide

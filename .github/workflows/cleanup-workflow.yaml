@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: test
-      run: echo test
-
     - name: install the gcloud cli
       uses: google-github-actions/setup-gcloud@v0
       with:
@@ -19,9 +16,17 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
       
+    # - name: get service & ingress lists
+    #   run: |
+    #     gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
+    #     kubectl get service -o wide
+    #     kubectl get ingress -A -o wide
+    #   # echo ******************
+    #   # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'        
+
     - name: get service & ingress lists
       run: |
-        gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
+        gcloud container clusters get-credentials liatrio-app-cluster-1 --region us-central1-a
         kubectl get service -o wide
         kubectl get ingress -A -o wide
       # echo ******************
@@ -33,7 +38,7 @@ jobs:
     - name: Delete ingress
       run: kubectl delete ingress liatrio-app-ingress
 
-    - name: Delete Sample Cluster
+    - name: Delete liatrio-app-cluster-1
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a
+      run: gcloud container clusters create liatrio-app-cluster-1 --project=$GOOGLE_PROJECT --location=us-central1-a
