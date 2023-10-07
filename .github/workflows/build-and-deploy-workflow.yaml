@@ -41,8 +41,9 @@ jobs:
     - name: CREATE SAMPLE CLUSTER
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a --enable-autoprovisioning --num-nodes=1 --max-cpu=1 --max-memory=2048
-      # run: gcloud container clusters create-auto sample-cluster --project=$GOOGLE_PROJECT --location=us-central1
+        # run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a --enable-autoprovisioning --num-nodes=1 --max-cpu=1 --max-memory=2048
+      run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a --num-nodes=1
+        # run: gcloud container clusters create-auto sample-cluster --project=$GOOGLE_PROJECT --location=us-central1
 
 
     - name: deploy to gke
