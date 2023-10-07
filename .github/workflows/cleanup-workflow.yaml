@@ -32,3 +32,8 @@ jobs:
       
     - name: Delete ingress
       run: kubectl delete ingress liatrio-app-ingress
+
+    - name: Delete Sample Cluster
+      env:
+        GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+      run: gcloud container clusters create sample-cluster --project=$GOOGLE_PROJECT --location=us-central1-a
