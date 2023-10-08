@@ -41,4 +41,4 @@ jobs:
     - name: Delete liatrio-app-cluster-1
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: gcloud container clusters create liatrio-app-cluster-1 --project=$GOOGLE_PROJECT --location=us-central1-a
+      run: gcloud container clusters delete liatrio-app-cluster-1 --project=$GOOGLE_PROJECT --location=us-central1-a

@@ -35,6 +35,15 @@ jobs:
     #     gcloud auth list
     #     gcloud config get account
 
+    - name: Reserve static IP
+      run: gcloud compute addresses create liatrio-static-ip --global
+
+    - name: Get static IP
+      run: gcloud compute addresses describe liatrio-static-ip --global
+
+    - name: Place static IP in file
+      run: gcloud compute addresses describe liatrio-static-ip --global > 'latest-url-link.txt'
+
     - name: Create liatrio-app-cluster-1
       # env:
       #   GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
