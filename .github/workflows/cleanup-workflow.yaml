@@ -16,27 +16,20 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
       
-    # - name: get service & ingress lists
-    #   run: |
-    #     gcloud container clusters get-credentials autopilot-cluster-1 --region us-south1
-    #     kubectl get service -o wide
-    #     kubectl get ingress -A -o wide
-    #   # echo ******************
-    #   # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'        
-
     - name: get service & ingress lists
       run: |
         gcloud container clusters get-credentials liatrio-app-cluster-1 --region us-central1-a
         kubectl get service -o wide
         kubectl get ingress -A -o wide
-      # echo ******************
-      # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'        
   
     - name: Delete web service
       run: kubectl delete service liatrio-app-web-service
       
     - name: Delete ingress
       run: kubectl delete ingress liatrio-app-ingress
+      
+    - name: Delete reserved static IP
+      run: gcloud compute addresses delete liatrio-static-ip --global
 
     - name: Delete liatrio-app-cluster-1
       env:
