@@ -16,17 +16,17 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
   
-    # - name: get service & ingress lists
-    #   run: |
-    #     gcloud container clusters get-credentials liatrio-app-cluster-1 --region us-central1-a
-    #     kubectl get service -o wide
-    #     kubectl get ingress -A -o wide
+    - name: get service & ingress lists
+      run: |
+        gcloud container clusters get-credentials liatrio-app-cluster-1 --region us-central1-a
+        kubectl get service -o wide
+        kubectl get ingress -A -o wide
   
-    # - name: Delete web service
-    #   run: kubectl delete service liatrio-app-web-service
+    - name: Delete web service
+      run: kubectl delete service liatrio-app-web-service
       
-    # - name: Delete ingress
-    #   run: kubectl delete ingress liatrio-app-ingress    
+    - name: Delete ingress
+      run: kubectl delete ingress liatrio-app-ingress    
       
     - name: Delete reserved static IP
       run: gcloud compute addresses delete liatrio-static-ip --global
@@ -34,4 +34,4 @@ jobs:
     - name: Delete liatrio-app-cluster-1
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-      run: gcloud container clusters delete liatrio-app-cluster-1 --project=$GOOGLE_PROJECT --location=us-central1-a
+      run: gcloud container clusters delete liatrio-app-cluster-1 --project=$GOOGLE_PROJECT --location=us-central1-a --quiet
