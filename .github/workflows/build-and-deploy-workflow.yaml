@@ -50,8 +50,8 @@ jobs:
     - name: Get static IP
       run: gcloud compute addresses describe liatrio-static-ip --global
   
-    - name: Create liatrio-app-cluster-1
-      run: gcloud container clusters create liatrio-app-cluster-1 --location=us-central1-a --enable-autoprovisioning --max-cpu=2 --max-memory=4096
+    # - name: Create liatrio-app-cluster-1
+    #   run: gcloud container clusters create liatrio-app-cluster-1 --location=us-central1-a --enable-autoprovisioning --max-cpu=2 --max-memory=4096
   
     - name: Apply web-service & ingress
       run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
