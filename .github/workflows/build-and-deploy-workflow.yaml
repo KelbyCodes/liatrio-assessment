@@ -49,10 +49,7 @@ jobs:
   
     - name: Get static IP
       run: gcloud compute addresses describe liatrio-static-ip --global
-  
-    # - name: Create liatrio-app-cluster-1
-    #   run: gcloud container clusters create liatrio-app-cluster-1 --location=us-central1-a --enable-autoprovisioning --max-cpu=2 --max-memory=4096
-  
+    
     - name: Apply web-service & ingress
       run: kubectl apply -f resources/web-service.yaml -f resources/ingress.yaml
       # kubectl get liatrio-app-ingress -o jsonpath='{.spec.clusterIP}'
@@ -61,6 +58,6 @@ jobs:
       run: |
         kubectl get service -o wide
         kubectl get ingress -A -o wide
-        echo "kubectl get service -o wide" > "latest-url-link.txt"
+        kubectl get service -o wide > "latest-url-link.txt"
         echo "\n" >> "latest-url-link.txt"
-        echo "kubectl get ingress -A -o wide" >> "latest-url-link.txt"
+        kubectl get ingress -A -o wide >> "latest-url-link.txt"
