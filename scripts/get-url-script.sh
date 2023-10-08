@@ -3,3 +3,5 @@
 echo "**********" 
 
 echo "**********" > 'latest-url-link.txt'
+
+curl 'http://www.kelbycodes.com/'
