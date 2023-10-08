@@ -33,6 +33,9 @@ jobs:
         docker build -t us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest .
         docker push us-south1-docker.pkg.dev/$GOOGLE_PROJECT/liatrio-app/node:latest
 
+    - name: Create liatrio-app-cluster-1
+      run: gcloud container clusters create liatrio-app-cluster-1 --location=us-central1-a --enable-autoprovisioning --max-cpu=2 --max-memory=4096
+
     - name: Deploy app image to cluster
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
