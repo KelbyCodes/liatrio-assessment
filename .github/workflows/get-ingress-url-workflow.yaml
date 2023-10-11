@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy-workflow:
+  get-ingress-url-workflow:
     runs-on: ubuntu-latest
     steps:
 
@@ -24,3 +24,6 @@ jobs:
         gcloud container clusters get-credentials liatrio-app-cluster-1 --location=us-central1-a
         kubectl get service -o wide
         kubectl get ingress -A -o wide
+
+    - name: test overwrite file
+      run: echo "foo-bar" > 'latest-url-link.txt'
