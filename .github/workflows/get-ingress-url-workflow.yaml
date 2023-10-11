@@ -21,5 +21,6 @@ jobs:
 
     - name: get service & ingress lists
       run: |
+        gcloud container clusters get-credentials liatrio-app-cluster-1 --location=us-central1-a
         kubectl get service -o wide
         kubectl get ingress -A -o wide
