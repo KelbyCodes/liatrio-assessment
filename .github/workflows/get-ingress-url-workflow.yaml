@@ -1,0 +1,25 @@
+name: get-ingress-url-workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy-workflow:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: code checkout
+      uses: actions/checkout@v3
+
+    - name: install the gcloud cli
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: ${{ secrets.GOOGLE_PROJECT }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        install_components: 'gke-gcloud-auth-plugin'
+        export_default_credentials: true
+
+    - name: get service & ingress lists
+      run: |
+        kubectl get service -o wide
+        kubectl get ingress -A -o wide
