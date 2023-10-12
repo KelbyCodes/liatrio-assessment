@@ -1,7 +1,3 @@
 #! /usr/bin/bash
 
-echo "**********" 
-
-echo "**********" > 'latest-url-link.txt'
-
-curl 'http://www.kelbycodes.com/'
+gh workflow run .github/workflows/get-ingress-url-workflow.yaml
