@@ -10,6 +10,18 @@ Prerequisites before running Initial command:
 
 ************ 0 - WHAT IS RUNNING? ************
 
+Once the "activation-script" script has been run, it will initiate a github actions workflow.
+    The 1st 'GHAW' will build and deploy a docker image of the nodejs express app.
+    The docker image is backed up to the Gcloud artifact registry, where it is given the "latest" tag.
+    A GKE cluster is created, and the deployment/web-service/ingress resources are applied to the cluster.
+    Some time will need to pass to deploy the cluster and open ingress.
+
+Once the "get-url-script" script has been run, it will initiate a the 2nd github actions workflow.
+    The 2nd 'GHAW' will open the browser to github, where the ingress IP Adress will be accessible to the user.
+
+Once the "cleanup-script" script has been run, it will initiate the 3rd & final github actions workflow.
+    The 3rd 'GHAW' will delete the cluster and associated resources/services.
+    ** The docker image in the artifact registry will NOT be deleted, for backup purposes.
 
 ************ 1 - RUN INSTRUCTIONS ************
 
